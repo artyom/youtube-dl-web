@@ -8,6 +8,7 @@ import (
 	"html/template"
 	"io"
 	"io/ioutil"
+	"log"
 	"math/rand"
 	"net/http"
 	"net/url"
@@ -91,7 +92,9 @@ func (h *handler) loop() {
 		case <-ticker.C:
 			h.cleanup()
 		case name := <-h.queue:
-			_ = h.download(name)
+			if err := h.download(name); err != nil {
+				log.Printf("%q download: %v", name, err)
+			}
 		}
 	}
 }
