@@ -254,8 +254,8 @@ func realmFromFile(name string) (*basicauth.Realm, error) {
 	}
 }
 
-var jobPath = regexp.MustCompile(`^/[a-zA-Z0-9-]+$`)
-var jobName = regexp.MustCompile(`^[a-zA-Z0-9-]+$`)
+var jobPath = regexp.MustCompile(`^/[a-zA-Z0-9-_]+$`)
+var jobName = regexp.MustCompile(`^[a-zA-Z0-9-_]+$`)
 
 var jobPageTemplate = template.Must(template.New("job").Parse(`<!doctype html>
 <head><meta http-equiv="refresh" content="10">
